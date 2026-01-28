@@ -9,6 +9,8 @@
  * License: GPLv2 or later
  */
 
+define( 'WPUM_VERSION', 'x.y.z' );
+
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
