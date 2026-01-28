@@ -1,94 +1,53 @@
 === WP User Management ===
-Contributors: deinname
-Donate link:
-Tags: user management, user registration, login, security, recaptcha
+Contributors: yourgithubusername
+Tags: users, admin, management
 Requires at least: 6.0
-Tested up to: 6.4
+Tested up to: 6.5
 Requires PHP: 7.4
-Stable tag: 1.5.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Frontend user registration with email activation, profile editing and login restriction for inactive accounts.
+Simple user management tools for WordPress administrators.
 
 == Description ==
 
-WP User Management extends WordPress with frontend-based user registration and profile management.
+WP User Management provides a minimal and secure admin settings page for managing user-related features in WordPress.
 
-The plugin focuses on controlled user activation, secure login handling and clear separation between frontend functionality and administrative control.
+The plugin focuses on:
+* Clean admin UI
+* Secure handling of settings
+* WordPress coding standards
+* Compatibility with current WordPress versions
 
-It is suitable for websites that require moderated registrations instead of immediate user access.
-
-== Features ==
-
-* Frontend user registration via shortcode
-* Email-based account activation
-* Login restriction for non-activated users
-* Frontend profile editing for logged-in users
-* Manual user activation via wp-admin user profile
-* Google reCAPTCHA v3 support
-* Nonce-based CSRF protection
-* Configurable logging (error / warning / info)
-* Mail logging via `wp_mail` hooks
-* Internationalization ready
-
-== Data Handling ==
-
-This plugin stores additional user meta data:
-
-* `_status`  
-  Possible values: `pending`, `active`
-
-* `wpum_activation`  
-  Stores a hashed activation token used for email verification
-
-If reCAPTCHA is enabled, data is transmitted to Google according to their privacy policy.
+This plugin does not collect any personal data and does not communicate with external services.
 
 == Installation ==
 
-1. Upload the folder `wp-user-management` to `/wp-content/plugins/`
-2. Activate the plugin through the WordPress admin area
-3. Configure the plugin via **WP User Management** in the admin menu
-4. Add the provided shortcodes to a page
-
-== Usage ==
-
-=== Available Shortcodes ===
-
-`[wpum_register]`  
-Displays the frontend registration form.
-
-`[wpum_edit_profile]`  
-Allows logged-in users to edit their profile.
-
-`[wpum_resend_activation]`  
-Allows users to request a new activation email.
+1. Upload the plugin files to the `/wp-content/plugins/wp-user-management` directory, or install the plugin through the WordPress plugins screen.
+2. Activate the plugin through the "Plugins" screen in WordPress.
+3. Go to **Settings → WP User Management** to configure the plugin.
 
 == Frequently Asked Questions ==
 
-= Does the plugin activate users automatically? =
-No. Newly registered users must activate their account via email or be activated manually by an administrator.
+= Does this plugin store personal data? =
 
-= Does the plugin work without reCAPTCHA? =
-Yes. reCAPTCHA is optional and can be enabled or disabled in the settings.
+No. This plugin does not store or process personal data.
 
-= Is this plugin compatible with multisite? =
-The plugin is compatible with standard WordPress multisite installations.
+= Does this plugin connect to external services? =
+
+No. All functionality runs locally within WordPress.
 
 == Screenshots ==
 
-1. Frontend registration form
-2. Admin user activation field
-3. Plugin settings page
+1. Admin settings page
 
 == Changelog ==
 
-= 1.5.0 =
-* Added admin settings page
-* Improved logging configuration
-* Minor internal improvements
+= 1.0.0 =
+* Initial release
 
 == Upgrade Notice ==
 
-= 1.5.0 =
-Recommended update.
+= 1.0.0 =
+Initial release.
