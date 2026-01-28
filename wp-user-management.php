@@ -1,12 +1,13 @@
 <?php
-/**
- * Plugin Name: WP User Management
- * Description: User management tools for WordPress.
- * Version: 1.0.0
- * Author: Your Name
- * Text Domain: wp-user-management
- * Domain Path: /languages
- */
+/*
+Plugin Name: WP User Management
+Description: Simple user management tools for WordPress administrators.
+Version: 1.0.0
+Author: Franzl Horvath
+License: GPLv2 or later
+Text Domain: wp-user-management
+Domain Path: /languages
+*/
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
