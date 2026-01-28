@@ -1,0 +1,48 @@
+# Copyright (C) 2026
+# This file is distributed under the same license as the WP User Management plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP User Management 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-user-management\n"
+"POT-Creation-Date: 2026-01-28 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: wp-user-management\n"
+"X-Generator: ChatGPT\n"
+
+#: wp-user-management.php:1
+msgid "WP User Management"
+msgstr ""
+
+#: wp-user-management.php:1
+msgid "User management tools for WordPress."
+msgstr ""
+
+#: wp-user-management.php:1
+msgid "Settings"
+msgstr ""
+
+#: wp-user-management.php:1
+msgid "Save Changes"
+msgstr ""
+
+#: wp-user-management.php:1
+msgid "General Settings"
+msgstr ""
+
+#: wp-user-management.php:1
+msgid "Enable feature"
+msgstr ""
+
+#: wp-user-management.php:1
+msgid "Yes"
+msgstr ""
+
+#: wp-user-management.php:1
+msgid "No"
+msgstr ""
