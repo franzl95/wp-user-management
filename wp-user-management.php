@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 /**
  * Plugin Name: WP User Management
  * Description: Lightweight user management with logging and optional reCAPTCHA protection.
