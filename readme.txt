@@ -1,5 +1,5 @@
 === WP User Management ===
-Contributors: yourgithubusername
+Contributors: franzl95
 Tags: users, admin, management
 Requires at least: 6.0
 Tested up to: 6.5
