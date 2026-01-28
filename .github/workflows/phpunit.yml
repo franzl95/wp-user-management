@@ -46,9 +46,11 @@ jobs:
           tools: phpunit
 
       - name: Install WordPress Test Suite
+        env:
+          WP_TESTS_FORCE_INSTALL: 1
         run: |
           bash <(curl -s https://raw.githubusercontent.com/wp-cli/scaffold-command/master/templates/install-wp-tests.sh) \
-            wpum_test root '' 127.0.0.1 ${{ matrix.wp }} --yes
+            wpum_test root '' 127.0.0.1 ${{ matrix.wp }}
 
       - name: Run PHPUnit
         env:
