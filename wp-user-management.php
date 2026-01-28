@@ -4,6 +4,7 @@ Plugin Name: WP User Management
 Description: Simple user management tools for WordPress administrators.
 Version: 1.0.0
 Author: Franzl Horvath
+Author URI: https://einfachalles.at
 License: GPLv2 or later
 Text Domain: wp-user-management
 Domain Path: /languages
