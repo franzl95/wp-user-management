@@ -1,8 +1,7 @@
-name: PHPUnit Tests
+name: PHPUnit (Lightweight)
 
 on:
   push:
-    branches: [ main ]
   pull_request:
 
 jobs:
@@ -11,19 +10,23 @@ jobs:
 
     strategy:
       matrix:
-        php: ['8.0', '8.1']
+        php: [8.0, 8.1]
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          coverage: none
           tools: phpunit
+          coverage: none
+
+      - name: Validate PHP syntax
+        run: |
+          find . -name "*.php" -not -path "./vendor/*" -print0 \
+          | xargs -0 -n1 php -l
 
       - name: Run PHPUnit
-        run: |
-          phpunit --configuration phpunit.xml.dist
+        run: phpunit --configuration phpunit.xml.dist
