@@ -14,7 +14,6 @@ jobs:
         image: mysql:8.0
         env:
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: wpum_test
         ports:
           - 3306:3306
         options: >-
@@ -26,7 +25,6 @@ jobs:
     strategy:
       matrix:
         php: ['8.0', '8.1']
-        wp: ['latest']
 
     steps:
       - name: Checkout repository
@@ -45,12 +43,16 @@ jobs:
           coverage: none
           tools: phpunit
 
+      - name: Reset test database
+        run: |
+          mysql --host=127.0.0.1 --user=root --password= -e "DROP DATABASE IF EXISTS wpum_test;"
+
       - name: Install WordPress Test Suite
         env:
           WP_TESTS_FORCE_INSTALL: 1
         run: |
           bash <(curl -s https://raw.githubusercontent.com/wp-cli/scaffold-command/master/templates/install-wp-tests.sh) \
-            wpum_test root '' 127.0.0.1 ${{ matrix.wp }}
+            wpum_test root '' 127.0.0.1 latest
 
       - name: Run PHPUnit
         env:
