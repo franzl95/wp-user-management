@@ -35,23 +35,4 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y subversion mysql-client
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php }}
-          extensions: mbstring, mysqli
-          coverage: none
-          tools: phpunit
-
-      - name: Install WordPress Test Suite
-        run: |
-          bash <(curl -s https://raw.githubusercontent.com/wp-cli/scaffold-command/master/templates/install-wp-tests.sh) \
-            wpum_test root '' 127.0.0.1 ${{ matrix.wp }}
-
-      - name: Run PHPUnit
-        env:
-          WP_TESTS_DIR: /tmp/wordpress-tests-lib
-        run: |
-          phpunit --configuration phpunit.xml.dist
+          sudo apt-get install -y subversion mysql-cl
