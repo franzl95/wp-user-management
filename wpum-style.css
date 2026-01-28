@@ -1,0 +1,4 @@
+.wpum-box { background:#fff; border:1px solid #ddd; padding:20px; border-radius:8px; margin-bottom:20px; }
+.wpum-in { width:100%; padding:10px; border:1px solid #ccc; border-radius:4px; margin-bottom:10px; box-sizing:border-box; }
+.wpum-btn { background:#0073aa; color:#fff !important; padding:10px 15px; border-radius:4px; cursor:pointer; border:none; text-decoration:none; display:inline-block; }
+.wpum-btn-danger { background:#cc0000; }
