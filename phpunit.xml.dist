@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="tests/bootstrap.php"
-         colors="true"
-         verbose="true">
+<phpunit
+    bootstrap="tests/bootstrap.php"
+    colors="true"
+    verbose="true"
+    failOnWarning="false"
+    failOnRisky="false"
+>
     <testsuites>
-        <testsuite name="WPUM">
-            <directory>./tests</directory>
+        <testsuite name="WP User Management">
+            <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
+
+    <php>
+        <env name="WP_TESTS_DIR" value="/tmp/wordpress-tests-lib"/>
+    </php>
 </phpunit>
