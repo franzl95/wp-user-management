@@ -8,6 +8,20 @@ jobs:
   phpunit:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: wpum_test
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
     strategy:
       matrix:
         php: ['7.4', '8.0', '8.1', '8.2']
@@ -20,7 +34,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y subversion
+          sudo apt-get install -y subversion mysql-client
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -29,14 +43,3 @@ jobs:
           extensions: mbstring, mysqli
           coverage: none
           tools: phpunit
-
-      - name: Install WordPress Test Suite
-        run: |
-          bash <(curl -s https://raw.githubusercontent.com/wp-cli/scaffold-command/master/templates/install-wp-tests.sh) \
-            wpum_test root '' localhost ${{ matrix.wp }}
-
-      - name: Run PHPUnit
-        env:
-          WP_TESTS_DIR: /tmp/wordpress-tests-lib
-        run: |
-          phpunit --configuration phpunit.xml.dist
