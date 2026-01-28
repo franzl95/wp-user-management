@@ -1,160 +1,43 @@
 <?php
 /**
  * Plugin Name: WP User Management
- * Description: Lightweight user management with activation status, logging and optional reCAPTCHA protection.
- * Version: 1.0.2
- * Author: Your Name
- * Text Domain: wpum
- * Domain Path: /languages
- * License: GPLv2 or later
+ * Plugin URI:  https://example.com/wp-user-management
+ * Description: Einfaches User-Management Plugin.
+ * Version:     1.0.0
+ * Author:      Dein Name
+ * License:     GPL v2 or later
+ * Text Domain: wp-user-management
  */
-
-define( 'WPUM_VERSION', 'x.y.z' );
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-/**
- * Disable licensing for wordpress.org version
- */
-if ( ! defined( 'WPUM_ENABLE_LICENSING' ) ) {
-    define( 'WPUM_ENABLE_LICENSING', false );
+class WPUM_Plugin {
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        add_action( 'init', [ $this, 'init' ] );
+    }
+
+    /**
+     * Init hook
+     */
+    public function init() {
+        // Hier später Plugin-Logik
+    }
+
+    /**
+     * Beispiel-Methode (für PHPUnit sinnvoll)
+     */
+    public function is_active() {
+        return true;
+    }
 }
 
-class WP_User_Management {
-
-    const OPT_LOG_LEVEL         = 'wpum_log_level';
-    const OPT_RECAPTCHA_ENABLED = 'wpum_recaptcha_enabled';
-    const OPT_RECAPTCHA_SITE    = 'wpum_recaptcha_site_key';
-    const OPT_RECAPTCHA_SECRET  = 'wpum_recaptcha_secret_key';
-
-    private $log_levels = [
-        'error'   => 1,
-        'warning' => 2,
-        'info'    => 3,
-    ];
-
-    public function __construct() {
-        add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
-        add_action( 'admin_menu', [ $this, 'register_admin_menu' ] );
-        add_action( 'admin_init', [ $this, 'register_settings' ] );
-
-        add_shortcode( 'wpum_register', [ $this, 'shortcode_register' ] );
-    }
-
-    /* -------------------------------------------------------------------------
-     * Internationalization
-     * ---------------------------------------------------------------------- */
-    public function load_textdomain() {
-        load_plugin_textdomain(
-            'wpum',
-            false,
-            dirname( plugin_basename( __FILE__ ) ) . '/languages'
-        );
-    }
-
-    /* -------------------------------------------------------------------------
-     * Admin
-     * ---------------------------------------------------------------------- */
-    public function register_admin_menu() {
-        add_options_page(
-            __( 'WP User Management', 'wpum' ),
-            __( 'WP User Management', 'wpum' ),
-            'manage_options',
-            'wpum-settings',
-            [ $this, 'render_settings_page' ]
-        );
-    }
-
-    public function register_settings() {
-
-        register_setting(
-            'wpum_settings',
-            self::OPT_LOG_LEVEL,
-            [
-                'type'              => 'string',
-                'sanitize_callback' => 'sanitize_text_field',
-                'default'           => 'error',
-            ]
-        );
-
-        register_setting(
-            'wpum_settings',
-            self::OPT_RECAPTCHA_ENABLED,
-            [
-                'type'    => 'boolean',
-                'default' => false,
-            ]
-        );
-
-        register_setting(
-            'wpum_settings',
-            self::OPT_RECAPTCHA_SITE,
-            [
-                'type'              => 'string',
-                'sanitize_callback' => 'sanitize_text_field',
-            ]
-        );
-
-        register_setting(
-            'wpum_settings',
-            self::OPT_RECAPTCHA_SECRET,
-            [
-                'type'              => 'string',
-                'sanitize_callback' => 'sanitize_text_field',
-            ]
-        );
-
-        add_settings_section(
-            'wpum_main',
-            __( 'General Settings', 'wpum' ),
-            '__return_false',
-            'wpum-settings'
-        );
-
-        add_settings_field(
-            'wpum_log_level',
-            __( 'Log Level', 'wpum' ),
-            [ $this, 'render_log_level_field' ],
-            'wpum-settings',
-            'wpum_main'
-        );
-
-        add_settings_field(
-            'wpum_recaptcha',
-            __( 'reCAPTCHA v3', 'wpum' ),
-            [ $this, 'render_recaptcha_fields' ],
-            'wpum-settings',
-            'wpum_main'
-        );
-    }
-
-    public function render_log_level_field() {
-        $level = get_option( self::OPT_LOG_LEVEL, 'error' );
-        ?>
-        <select name="<?php echo esc_attr( self::OPT_LOG_LEVEL ); ?>">
-            <option value="error" <?php selected( $level, 'error' ); ?>>Error</option>
-            <option value="warning" <?php selected( $level, 'warning' ); ?>>Warning</option>
-            <option value="info" <?php selected( $level, 'info' ); ?>>Info</option>
-        </select>
-        <?php
-    }
-
-    public function render_recaptcha_fields() {
-        $enabled = (bool) get_option( self::OPT_RECAPTCHA_ENABLED, false );
-        $site    = get_option( self::OPT_RECAPTCHA_SITE, '' );
-        $secret  = get_option( self::OPT_RECAPTCHA_SECRET, '' );
-        ?>
-        <fieldset>
-            <label>
-                <input type="checkbox"
-                       name="<?php echo esc_attr( self::OPT_RECAPTCHA_ENABLED ); ?>"
-                       value="1" <?php checked( $enabled ); ?> />
-                <?php esc_html_e( 'Enable Google reCAPTCHA v3', 'wpum' ); ?>
-            </label>
-
-            <p>
-                <label>
-                    <?php esc_html_e( 'Site Key', 'wpum' ); ?><br>
-                    <input ty
+/**
+ * Plugin starten
+ */
+new WPUM_Plugin();
